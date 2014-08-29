@@ -1,0 +1,35 @@
+{
+  "name": "neural-network",
+  "version": "0.0.0",
+  "description": "A powerful javascript neural network implementation.",
+  "main": "dist/neural-network.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://danieltartarottisobrosa:k112358@github.com/danieltartarottisobrosa/neural-network.git"
+  },
+  "keywords": [
+    "neural",
+    "network",
+    "rna"
+  ],
+  "author": "Daniel T. Sobrosa (danieltsobrosa@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danieltartarottisobrosa/neural-network/issues"
+  },
+  "homepage": "https://github.com/danieltartarottisobrosa/neural-network",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "~1.9.1",
+    "grunt": "~0.4.5",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-uglify": "~0.5.1",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-jsdoc": "~0.5.7",
+    "grunt-mocha-test": "~0.11.0",
+    "sinon": "~1.10.3"
+  }
+}
