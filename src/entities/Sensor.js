@@ -4,14 +4,15 @@
    * @constructor
    */
   function Sensor( options ) {
-    var _id = exports.genId( "Sensor" );
+    var self = this;
+    var _id;
     var _neuron = new exports.Neuron();
   
     (function() {
       if ( !options ) return;
 
-      if ( options.activationFunction ) {
-        _neuron.setActivationFunction( options.activationFunction );
+      if ( options.id ) {
+        _id = options.id;
       }
     }());
 
@@ -23,14 +24,6 @@
       _id = id;
     };
 
-    this.getActivationFunction = function() {
-      return _neuron.getActivationFunction();
-    };
-
-    this.setActivationFunction = function( activationFunction ) {
-      _neuron.setActivationFunction( activationFunction );
-    };
-
     this.getSynapses = function() {
       return _neuron.getSynapses();
     };
@@ -40,6 +33,7 @@
     };
 
     this.input = function( value ) {
+      //console.log( self.getId(), "(", value, ") =", _neuron.getActivationFunction()( value ) );
       return _neuron.getActivationFunction()( value );
     };
   }

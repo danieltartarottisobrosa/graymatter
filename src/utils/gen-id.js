@@ -2,16 +2,20 @@
 
   var prefixes = {};
 
-  function idGenerator( prefix ) {
-    if ( !prefixes[ prefix ] ) {
-      prefixes[ prefix ] = -1;
-    }
+  function IdGenerator() {
 
-    prefixes[ prefix ]++;
+	this.genId = function( prefix ) {
+		if ( typeof prefixes[ prefix ] === "undefined" ) {
+		  prefixes[ prefix ] = -1;
+		}
 
-    return prefix + "" + prefixes[ prefix ];
+		prefixes[ prefix ]++;
+
+		return prefix + "" + prefixes[ prefix ];
+	};
+
   }
 
-  exports.genId = idGenerator;
+  exports.IdGenerator = IdGenerator;
 
 }());

@@ -4,12 +4,17 @@
    * @constructor
    */
   function Synapse( options ) {
-    var _id = exports.genId( "Synapse" );
+    var self = this;
+    var _id;
     var _weight = 0;
     var _neuron = null;
 
     (function() {
       if ( !options ) return;
+
+      if ( options.id ) {
+        _id = options.id;
+      }
 
       if ( typeof options.weight !== "undefined" ) {
         _weight = options.weight;
@@ -41,6 +46,7 @@
     };
 
     this.input = function( value ) {
+      //console.log( self.getId(), "(", value, ") =", value * _weight );
       return value * _weight;
     };
 
