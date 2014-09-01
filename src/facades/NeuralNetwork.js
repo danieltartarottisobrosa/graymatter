@@ -22,8 +22,10 @@
       var id;
 
       for ( i = 0; i < arr.length; i++ ) {
-        id = idGenerator.genId( prefix );
-        arr[ i ].setId( id );
+        if ( !arr[ i ].getId() ) {
+          id = idGenerator.genId( prefix );
+          arr[ i ].setId( id );
+        }
       }
 
       return arr;
@@ -89,7 +91,6 @@
       var key, newKey;
       var links, link;
       var i;
-      var count = 0;
 
       var ret = { values: {} };
       ret.synapses = {};
@@ -97,11 +98,17 @@
       // Percorre os neurônios
       for ( key in  neurons ) {
         neuron = neurons[ key ];
-        count++;
 
         // Pulsa os valores para dentro do neurônio
         value = neuron.input( values[ key ] );
         links = neuron.getSynapses();
+
+        // Se não possui links é então a camada de saída
+        if ( links.length === 0 ) {
+          ret.finish = true;
+          ret.values[ key ] = value;
+          continue;
+        }
 
         // Mapeia o valor para cada uma dos links da celula
         for ( i = 0; i < links.length; i++ ) {
@@ -112,11 +119,6 @@
           ret.values[ newKey ] = value;
           ret.synapses[ newKey ] = link;
         }
-      }
-
-      if ( count === 1 ) {
-        ret = { finish: true, value: {} };
-        ret.value[ key ] = value;
       }
 
       return ret;
@@ -189,7 +191,7 @@
 
       } while ( !retNeurons.finish );
 
-      return retNeurons.value;
+      return retNeurons.values;
     };
 
   }

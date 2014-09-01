@@ -12,9 +12,7 @@ module.exports = function( grunt ) {
       dist: {
         src: [
           "build/header.js",
-          "src/utils/**/*.js",
-          "src/entities/**/*.js",
-          "src/builders/**/*.js",
+          "src/**/*.js",
           "build/footer.js"
         ],
         dest: 'dist/graymatter.js'
