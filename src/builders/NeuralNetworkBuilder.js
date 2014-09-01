@@ -26,7 +26,7 @@
 
         fromLayer[ i ].getSynapses().push( synapse );
         synapse.setNeuron( toNeuron );
-        
+
         _synapses.push( synapse );
       }
     }
@@ -55,7 +55,13 @@
     this.createOutputLayer = function( count, neuronOptions, synapseOptions ) {
       var i;
       var neuron;
-      var previousLayer = _hiddenLayers[ _hiddenLayers.length - 1 ];
+      var previousLayer;
+
+      if ( _hiddenLayers.length > 0 ) {
+        previousLayer = _hiddenLayers[ _hiddenLayers.length - 1 ];
+      } else {
+        previousLayer = _inputSensors;
+      }
 
       _outputNeurons = [];
 
